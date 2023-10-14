@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const validationSchema = Yup.object({
-    email: Yup.string().email('Enter a valid email address').required('Email cannot be empty'),
+    email: Yup.string().email('Enter a validd email address').required('Email cannot be empty'),
     password: Yup.string().min(8, "Must be at least 8 characters").required('Password cannot be empty'),
     username: Yup.string().required('Username cannot be empty'),
 });
