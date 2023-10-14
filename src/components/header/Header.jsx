@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import styles from './header.module.css'
 import Button from '../button/Button'
 import Logo from '../../assets/Logo.svg'
@@ -34,11 +34,13 @@ const Header = () => {
             </div>
             <ul className={styles.menu}>
                 {menu.map((item, i) => (
-                    <Link to={item.url} key={i}>
+                    <NavLink className={({ isActive, isPending }) =>
+                        isPending ? `${styles.pending}` : isActive ? `${styles.active}` : ""
+                    } to={item.url} key={i}>
                         <li>
                             {item.name}
                         </li>
-                    </Link>
+                    </NavLink>
                 ))}
             </ul>
             <div className={styles.actions}>

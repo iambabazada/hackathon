@@ -1,0 +1,50 @@
+.h1 {
+    color: white;
+    z-index: 10;
+}
+
+.hero {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 10rem;
+}
+
+
+.hero {
+    display: flex;
+    align-items: center;
+}
+
+/* left side */
+
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 50%;
+}
+
+.btns {
+    display: flex;
+    gap: 2rem;
+}
+
+.left h2 {
+    color: white;
+    font-size: 48px;
+}
+
+.left p {
+    color: white;
+    font-size: 18px;
+}
+
+
+/* right side */
+
+.right {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+    padding-right: 2rem;
+}
