@@ -1,0 +1,48 @@
+.rating {
+    background-color: rgba(0, 0, 0, .6);
+    max-width: 1440px;
+    margin: 0rem auto;
+    padding: 1rem;
+}
+
+.rating_item {
+    display: flex;
+    width: 100%;
+    padding: 1rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.15);
+    margin-top: 1rem;
+}
+
+.user_img {
+    width: 30px;
+    background-color: green;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.user_info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rating_item h3 {
+    color: #FFF;
+    font-family: Arial;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.rating_item span {
+    color: #FFF;
+    font-family: Arial;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
