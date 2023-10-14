@@ -1,0 +1,36 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 50px;
+}
+
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    color: white;
+}
+
+
+.menu {
+    display: flex;
+    gap: 1rem;
+
+}
+
+.menu a {
+    color: white;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: white;
+}
