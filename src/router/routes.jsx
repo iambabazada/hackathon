@@ -1,4 +1,5 @@
 import Home from "../pages/home/Home"
+import Territories from "../pages/territories/Territories"
 import Trees from "../pages/trees/Trees"
 
 const routes = [
@@ -9,6 +10,10 @@ const routes = [
     {
         path: '/agaclar',
         element: <Trees />
+    },
+    {
+        path: '/eraziler',
+        element: <Territories />
     }
 
 ]
