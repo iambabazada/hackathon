@@ -1,0 +1,33 @@
+.basket_item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    padding: 1rem 0rem;
+
+}
+
+.basket_img {
+    width: 60px;
+    height: 60px;
+    background-color: red;
+}
+
+.basket_info {
+    text-align: start;
+    width: 35%;
+}
+
+.basket_info h3 {
+    font-size: 14px;
+}
+
+.order span {
+    background-color: rgb(203, 203, 203);
+    padding: 0rem .4rem;
+    border-radius: 5 px;
+}
+
+.basket_img img {
+    width: 100%;
+    height: 100%;
+}

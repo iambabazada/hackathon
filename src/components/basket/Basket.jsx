@@ -8,6 +8,7 @@ const Basket = () => {
 
     const cartItems = useSelector(state => state.basket.basket)
 
+    const totalCount = useSelector((state) => state.basket.totalCount)
 
     return (
         <div className={styles.basket}>
@@ -16,6 +17,13 @@ const Basket = () => {
                     <BasketItem key={index} item={item} />
                 ))}
             </div>
+            {
+                totalCount === 0 && (
+                    <div>
+                        Səbət Bosdur
+                    </div>
+                )
+            }
         </div>
     )
 }
