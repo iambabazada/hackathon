@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Button = ({ bg = "red", className, onClick, width = "sm", children }) => {
+const Button = ({ bg = "#00dc82", className, onClick, width = "sm", children }) => {
     const styleBtn = {
         backgroundColor: bg,
         color: 'white',
