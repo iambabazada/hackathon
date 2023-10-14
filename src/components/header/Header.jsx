@@ -3,6 +3,10 @@ import { Link, NavLink } from 'react-router-dom'
 import styles from './header.module.css'
 import Button from '../button/Button'
 import Logo from '../../assets/Logo.svg'
+import Basket from '../basket/Basket'
+import CartImg from '../../assets/cart.svg'
+import { useSelector } from 'react-redux'
+
 
 
 const Header = () => {
@@ -28,13 +32,15 @@ const Header = () => {
 
     const [basket, setBasket] = useState(false)
 
+    const totalCount = useSelector((state) => state.basket.totalCount)
+
 
 
     return (
         <header className={styles.header}>
             <div className={styles.brand}>
                 <img src={Logo} alt="" />
-                ecoFriends
+                <span className={styles.logo}>ecoFriends</span>
             </div>
             <ul className={styles.menu}>
                 {menu.map((item, i) => (
@@ -50,12 +56,15 @@ const Header = () => {
             <div className={styles.actions}>
                 <div className={styles.cart}>
                     <button onClick={() => setBasket(!basket)}>
-                        cart
+                        <span className={styles.total_count}>
+                            {totalCount}
+                        </span>
+                        <img src={CartImg} className={styles.cart_icon} alt="" />
                     </button>
                     {
                         basket && (
                             <div className={styles.cart_modal}>
-                                cart
+                                <Basket />
                             </div>
                         )
                     }

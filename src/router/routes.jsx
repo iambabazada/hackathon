@@ -12,6 +12,10 @@ const routes = [
         element: <Trees />
     },
     {
+        path: '/reyting',
+
+    },
+    {
         path: '/eraziler',
         element: <Territories />
     }
