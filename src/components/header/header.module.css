@@ -23,6 +23,8 @@
 
 .menu {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
     font-size: 24px;
     transition: all .3s;
@@ -40,6 +42,7 @@
 }
 
 .menu a {
+    font-size: 18px;
     color: white;
 }
 
