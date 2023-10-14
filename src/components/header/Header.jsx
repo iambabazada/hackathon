@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import styles from './header.module.css'
 import Button from '../button/Button'
@@ -26,6 +26,10 @@ const Header = () => {
 
     ]
 
+    const [basket, setBasket] = useState(false)
+
+
+
     return (
         <header className={styles.header}>
             <div className={styles.brand}>
@@ -45,7 +49,16 @@ const Header = () => {
             </ul>
             <div className={styles.actions}>
                 <div className={styles.cart}>
-                    cart
+                    <button onClick={() => setBasket(!basket)}>
+                        cart
+                    </button>
+                    {
+                        basket && (
+                            <div className={styles.cart_modal}>
+                                cart
+                            </div>
+                        )
+                    }
                 </div>
                 <div className={styles.btn}>
                     <Button width='lg'>
