@@ -2,9 +2,9 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import styles from './Register.module.css'
 import Button from '../../../components/button/Button';
 import { register } from '../../../redux/authSlice';
+import styles from './Register.module.css'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

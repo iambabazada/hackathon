@@ -4,6 +4,10 @@ import { useFormik } from 'formik';
 import * as Yup from "yup";
 import { Link } from 'react-router-dom';
 import LoginImage from '../../../assets/images/Other 03.png'
+import { useDispatch } from 'react-redux';
+import { login } from '../../../redux/authSlice';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const loginSchema = Yup.object({
     email: Yup.string().required('Email cannot be empty').email('Enter a valid email adress'),
@@ -11,13 +15,49 @@ const loginSchema = Yup.object({
 });
 
 const SignIn = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const formik = useFormik({
         initialValues: {
             email: '',
             password: ''
         },
         onSubmit: values => {
-            console.log(values);
+            dispatch(login(values))
+                .unwrap()
+                .then(() => {
+                    toast.success("Xoş Gəlmisiniz :)", {
+                        position: "top-left",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+
+                    setTimeout(() => {
+                        navigate('/')
+                    }, 3000)
+                })
+                .catch((err) => {
+                    console.log(err);
+                    const {
+                        message: error
+                    } = err
+
+                    toast.error(err.message, {
+                        position: "top-left",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                })
+
         },
         validationSchema: loginSchema,
         validationOnMount: true
@@ -64,7 +104,7 @@ const SignIn = () => {
                 </div>
             </div>
             <div className={styles.img_box}><img src={LoginImage} alt="" /></div>
-            
+
         </div>
     )
 }
