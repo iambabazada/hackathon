@@ -1,0 +1,13 @@
+.trees_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+}
+
+.trees {
+    background-color: rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    padding: 2rem;
+}
