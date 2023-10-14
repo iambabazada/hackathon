@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import styles from './header.module.css'
 import Button from '../button/Button'
 import Logo from '../../assets/Logo.svg'
+import Basket from '../basket/Basket'
 
 
 const Header = () => {
@@ -55,7 +56,7 @@ const Header = () => {
                     {
                         basket && (
                             <div className={styles.cart_modal}>
-                                cart
+                                <Basket />
                             </div>
                         )
                     }
