@@ -6,10 +6,14 @@ import Logo from '../../assets/Logo.svg'
 import Basket from '../basket/Basket'
 import CartImg from '../../assets/cart.svg'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 
 
 const Header = () => {
+
+    const navigate = useNavigate()
+
     const menu = [
         {
             url: '/',
@@ -70,7 +74,7 @@ const Header = () => {
                     }
                 </div>
                 <div className={styles.btn}>
-                    <Button width='lg'>
+                    <Button width='lg' onClick={() => navigate('/qeydiyyat')}>
                         Daxil ol
                     </Button>
                 </div>
