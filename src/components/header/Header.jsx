@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import styles from './header.module.css'
 import Button from '../button/Button'
 import Logo from '../../assets/Logo.svg'
 import Basket from '../basket/Basket'
 import CartImg from '../../assets/cart.svg'
 import { useSelector } from 'react-redux'
+
 
 
 
@@ -29,6 +30,8 @@ const Header = () => {
         },
 
     ]
+
+    const navigate = useNavigate()
 
     const [basket, setBasket] = useState(false)
 
@@ -70,7 +73,7 @@ const Header = () => {
                     }
                 </div>
                 <div className={styles.btn}>
-                    <Button width='lg'>
+                    <Button width='lg' onClick={() => navigate('/daxil-ol')}>
                         Daxil ol
                     </Button>
                 </div>
