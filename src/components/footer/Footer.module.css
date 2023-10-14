@@ -27,7 +27,7 @@
 .footer_header .footer_logo{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 11spx;
 }
 .footer_header .footer_logo h1{
     color: #fff;
