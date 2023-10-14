@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Button = ({ bg = "#00dc82", className, onClick, width = "sm", children }) => {
+const Button = ({ bg = "#01985A", className, onClick, width = "sm", children }) => {
     const styleBtn = {
         backgroundColor: bg,
         color: 'white',
@@ -28,7 +28,7 @@ const Button = ({ bg = "#00dc82", className, onClick, width = "sm", children }) 
         styleBtn.width = '100px'
     }
     if (width === 'xl') {
-        styleBtn.width = '200px'
+        styleBtn.width = '150px'
     }
     if (width === "full") {
         styleBtn.width = "100%"
