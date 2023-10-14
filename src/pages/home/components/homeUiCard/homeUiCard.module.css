@@ -1,0 +1,16 @@
+.card_container{
+    padding: 19px 85px 27px 81px;
+    background-color: cyan;
+}
+
+.right_side{
+    display: flex;
+    justify-content: end;
+}
+.right_side .box{
+    display: flex;
+    width: 700px;
+    height: 182px;
+    border-radius: 12px;
+    background-color: blue;
+}
