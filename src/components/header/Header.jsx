@@ -45,7 +45,8 @@ const Header = () => {
     const [openUser, setOpenUser] = useState(false)
 
     const handleUser = () => {
-        setOpenUser(!openUser)
+        // setOpenUser(!openUser)
+        dispatch(logout())
     }
 
     const handleLogout = () => {
@@ -78,7 +79,7 @@ const Header = () => {
                         <img src={CartImg} className={styles.cart_icon} alt="" />
                     </button>
                     {
-                        basket && (
+                        basket && isAuth && (
                             <div className={styles.cart_modal}>
                                 <Basket />
                             </div>
@@ -93,9 +94,9 @@ const Header = () => {
 
                     ) : (
                         <>
-                            <button onClick={handleUser}>
+                            <span className={styles.logout} onClick={handleUser}>
                                 A
-                            </button>
+                            </span>
                             {
                                 openUser && (
 

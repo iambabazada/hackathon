@@ -3,6 +3,9 @@ import styles from './rating.module.css'
 import { useSelector } from 'react-redux'
 import { async } from 'q'
 import axios from 'axios'
+import Badge_1 from '../../assets/images/badge_1.png'
+import Badge_2 from '../../assets/images/badge_2.png'
+import Badge_3 from '../../assets/images/badge_3.png'
 
 const Rating = () => {
 
@@ -17,6 +20,8 @@ const Rating = () => {
     useEffect(() => {
         users()
     }, [])
+
+    // data.sort((a, b) => b.treeCount - a.treeCount);
 
 
     return (
@@ -52,7 +57,15 @@ export const RatingItem = ({ data }) => {
                 </span>
             </div>
             <div>
-                rozetta
+                {data?.treeCount >= 15} (
+                <img src={Badge_1} alt="" />
+                )
+                {data?.treeCount >= 35} (
+                <img src={Badge_2} alt="" />
+                )
+                {data?.treeCount >= 1} (
+                <img src={Badge_3} alt="" />
+                )
             </div>
         </div>
     )

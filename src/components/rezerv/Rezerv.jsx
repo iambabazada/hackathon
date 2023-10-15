@@ -7,10 +7,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { compareName } from '../../redux/basketSlice'
 import TreeImg from '../../assets/images/tree.png'
 import GreenTree from '../../assets/images/greentree.png'
-import { Popover } from '@headlessui/react'
+import Button from '../../components/button/Button'
+import { ToastContainer, toast } from 'react-toastify'
+
+
 
 const Rezerv = ({ data }) => {
     console.log("sdcdsc", data);
+    const dispatch = useDispatch()
 
     const basketItem = useSelector((state) => state.basket.basket)
 
@@ -32,21 +36,28 @@ const Rezerv = ({ data }) => {
 
     const [message, setMessage] = useState('')
 
-
-
     const compareName = useSelector((state) => state.basket.compareName)
 
-    console.log("dcsd", compareName);
+    const basketCount = useSelector((state) => state.basket.count)
+
+
+
+    console.log("basket quantity", basketCount);
+
+    const user = useSelector((state) => state.auth.users)
+    const token = useSelector((state) => state.auth.token)
 
     const [popUp, setPopUp] = useState(false)
+
+    const isBasketOpen = useSelector((state) => state.basket.isBasketOpen)
 
 
     const handleID = () => {
         getTretorieId()
         console.log("rfdv");
         if (compareName === terrioriName) {
+            setMessage(`${compareName} agac ekile biler`)
             setPopUp(true)
-
         }
         else {
             setMessage(`${compareName} agac ekile bilmez`)
@@ -99,16 +110,62 @@ const Rezerv = ({ data }) => {
         }
     ]
 
+    const handleOrder = () => {
+        toast.success("İstəyiniz qeydə alındı", {
+            position: "top-left",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+
+        setPopUp(false)
+
+        // dispatch(isBasketOpen(false))
+
+        const postCount = async () => {
+            const response = await axios.put(`/api/v1/users/${user.id}/buytree`, { treeCount: basketCount }, {
+                headers: {
+                    'Authorization': `Bearer ${token}` // Set the token in the Authorization header
+                }
+            });
+
+            return response
+        }
+
+        postCount()
+    }
+
 
     return (
         <div className={styles.img_container}>
+            <ToastContainer />
             <img src={data.image} className={styles.img} alt="" />
             <div className={styles.trees}>
                 {trees.map((tree) => (
                     <div onMouseLeave={() => setOpen(!open)} onMouseEnter={() => setOpen(!open)} className={styles.tree}>
                         <img src={tree.tree} onClick={tree.onClick} alt="" />
                     </div>
+
                 ))}
+                {popUp && (
+                    <div className={styles.popup}>
+                        <div className={styles.popup_overlay}>
+                            <label htmlFor="">Ağacı adlandırın</label>
+                            <input type="text" className={styles.input} />
+                            <Button width={'100%'} onClick={handleOrder}>
+                                İməclik tədbirində Şəxsən ək
+                            </Button>
+                            <Button width={'100%'} onClick={handleOrder}>
+                                Bağban əksin
+                            </Button>
+
+                        </div>
+                    </div>
+
+                )}
                 <button onClick={handleID}>
                     <img src={TreeImg} className={styles.empty_tree} alt="" />
                 </button>
@@ -123,23 +180,7 @@ const Rezerv = ({ data }) => {
                 {message}
             </div>
 
-            {popUp & (
-                <Popover className="relative">
-                    <Popover.Button>Solutions</Popover.Button>
 
-                    <Popover.Panel className="absolute z-10">
-                        <div className="grid grid-cols-2">
-                            <a href="/analytics">Analytics</a>
-                            <a href="/engagement">Engagement</a>
-                            <a href="/security">Security</a>
-                            <a href="/integrations">Integrations</a>
-                        </div>
-
-                        <img src="/solutions.jpg" alt="" />
-                    </Popover.Panel>
-                </Popover>
-
-            )}
 
         </div>
     )

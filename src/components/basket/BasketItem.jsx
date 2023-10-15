@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './BasketItem.module.css'
 import Button from '../button/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { compareName, decrementCart, deleteFromBasket, incrementCart } from '../../redux/basketSlice'
+import { compareName, count, decrementCart, deleteFromBasket, incrementCart } from '../../redux/basketSlice'
 import { useNavigate } from 'react-router'
 
 const BasketItem = ({ item }) => {
@@ -29,6 +29,7 @@ const BasketItem = ({ item }) => {
         dispatch(compareName(item.treeName))
         navigate('/eraziler')
         console.log("salam", compireName);
+        dispatch(count(item.quantity))
     }
 
     return (
