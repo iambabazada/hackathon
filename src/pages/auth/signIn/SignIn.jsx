@@ -9,10 +9,6 @@ import { login } from '../../../redux/authSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-const loginSchema = Yup.object({
-    email: Yup.string().required('Email cannot be empty').email('Enter a valid email adress'),
-    password: Yup.string().min(8, "Must be at least 8 characters").required('Password cannot be empty'),
-});
 
 const SignIn = () => {
     const dispatch = useDispatch()
@@ -57,8 +53,7 @@ const SignIn = () => {
                 })
 
         },
-        // validationSchema: loginSchema,
-        // validationOnMount: true
+
 
     })
 

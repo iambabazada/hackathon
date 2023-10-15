@@ -57,9 +57,7 @@ export const authSlice = createSlice({
             .addCase(register.fulfilled, (state, action) => {
                 state.users = action.payload.user;
                 localStorage.setItem("users", JSON.stringify(action.payload))
-                // const previousUsers = JSON.parse(localStorage.getItem("users") || '[]');
-                // previousUsers.push(action.payload.user);
-                // localStorage.setItem("users", JSON.stringify(previousUsers));
+
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.isAuth = true
@@ -79,6 +77,5 @@ export const authSlice = createSlice({
 
 export default authSlice.reducer
 
-// export const { logout } = authSlice.actions
 
 
