@@ -1,12 +1,17 @@
 import React from 'react'
 import styles from './BasketItem.module.css'
 import Button from '../button/Button'
-import { useDispatch } from 'react-redux'
-import { decrementCart, deleteFromBasket, incrementCart } from '../../redux/basketSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { compareName, decrementCart, deleteFromBasket, incrementCart } from '../../redux/basketSlice'
+import { useNavigate } from 'react-router'
 
 const BasketItem = ({ item }) => {
 
     const dispatch = useDispatch()
+
+    const navigate = useNavigate()
+
+    const compireName = useSelector((state) => state.basket.compareName)
 
     const handleDeleteCart = () => {
         dispatch(deleteFromBasket(item.id))
@@ -20,14 +25,20 @@ const BasketItem = ({ item }) => {
         dispatch(incrementCart(item.id))
     }
 
+    const handleField = () => {
+        dispatch(compareName(item.treeName))
+        navigate('/eraziler')
+        console.log("salam", compireName);
+    }
+
     return (
         <div className={styles.basket_item}>
             <div className={styles.basket_img}>
-                <img src={item?.images[0]} alt="" />
+                <img src={item?.image} alt="" />
             </div>
             <div className={styles.basket_info}>
                 <h3>
-                    {item.brand}
+                    {item.treeName}
                 </h3>
                 <div>
                     <button
@@ -43,10 +54,13 @@ const BasketItem = ({ item }) => {
             </div>
             <div className={styles.order}>
                 <span>
-                    ₼ 150
+                    ₼ {item?.price}
                 </span>
                 <button onClick={handleDeleteCart}>
                     X
+                </button>
+                <button onClick={handleField}>
+                    sifaris et
                 </button>
             </div>
         </div>

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import LoginImage from '../../../assets/images/Other 03.png'
 import { useDispatch } from 'react-redux';
 import { login } from '../../../redux/authSlice';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 const loginSchema = Yup.object({
@@ -43,9 +43,7 @@ const SignIn = () => {
                 })
                 .catch((err) => {
                     console.log(err);
-                    const {
-                        message: error
-                    } = err
+
 
                     toast.error(err.message, {
                         position: "top-left",
@@ -59,14 +57,15 @@ const SignIn = () => {
                 })
 
         },
-        validationSchema: loginSchema,
-        validationOnMount: true
+        // validationSchema: loginSchema,
+        // validationOnMount: true
 
     })
 
 
     return (
         <div className={styles.container}>
+            <ToastContainer />
             <div className={styles.login_field}>
                 <div className={styles.login_box}>
                     <h4>Xoş Gəlmisiniz!</h4>

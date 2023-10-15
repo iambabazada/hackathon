@@ -1,5 +1,6 @@
 .img {
     width: 500px;
+    height: 400px;
 }
 
 .img_container {
@@ -11,29 +12,51 @@
     grid-template-columns: repeat(4, .3fr);
     gap: 1rem;
     position: absolute;
-    top: 30px;
+    top: 100px;
     left: 20px;
-    background-color: rgba(178, 222, 39, .6);
+    background-color: rgba(187, 87, 40, 0.6);
     ;
     width: 300px;
     height: 300px;
 }
 
 .tree {
-    background-color: red;
     width: 30px;
     height: 30px;
     text-align: center;
+    transition: .3s all;
+}
+
+.tree:hover {
+    transform: scale(1.1);
+
 }
 
 .by_user {
-    position: fixed;
-    right: 200px;
-    bottom: 0;
-    color: black;
-    display: flex;
-    justify-content: end;
     width: 200px;
     height: 400px;
-    background-color: white;
+}
+
+.territorie {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.message {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: coral;
+    padding: .3rem;
+    border-radius: 5px;
+    color: white;
+    font-size: 24px;
+}
+
+.empty_tree {
+    opacity: .5;
+    display: flex;
+    align-items: start;
+    justify-content: start;
 }

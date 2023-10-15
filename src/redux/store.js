@@ -6,6 +6,6 @@ export const store = configureStore({
     reducer: {
         // products: productSlice,
         basket: basketSlice,
-        auth: authSlice.reducer
+        auth: authSlice
     },
 })

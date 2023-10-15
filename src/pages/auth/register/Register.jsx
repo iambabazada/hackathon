@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../../components/button/Button';
 import { register } from '../../../redux/authSlice';
 import styles from './Register.module.css'
+import RegisterImg from '../../../assets/images/Object/Other 07reg.png'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -94,6 +95,7 @@ const Register = () => {
         <div className={styles.register}>
             <ToastContainer />
             <div className={styles.image_box}>
+                <img src={RegisterImg} alt="" />
             </div>
             <div className={styles.form_box}>
                 <form onSubmit={formik.handleSubmit} className={styles.form}>

@@ -24,6 +24,7 @@ const Basket = () => {
                     </div>
                 )
             }
+
         </div>
     )
 }

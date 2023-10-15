@@ -1,16 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './rating.module.css'
+import { useSelector } from 'react-redux'
+import { async } from 'q'
+import axios from 'axios'
 
 const Rating = () => {
+
+    const [data, setData] = useState()
+
+    const users = async () => {
+        const response = await axios('/api/v1/users/rating')
+        console.log(response.data);
+        setData(response.data)
+    }
+
+    useEffect(() => {
+        users()
+    }, [])
 
 
     return (
         <main className={styles.rating}>
-            <RatingItem />
-            <RatingItem />
-            <RatingItem />
-            <RatingItem />
-            <RatingItem />
+            {data?.map((item) => (
+                <RatingItem key={item.id} data={item} />
+            ))}
         </main>
     )
 }
@@ -18,22 +31,24 @@ const Rating = () => {
 
 
 
-export const RatingItem = () => {
+export const RatingItem = ({ data }) => {
+
+    console.log("item", data);
+
     return (
         <div className={styles.rating_item}>
 
             <div className={styles.user_info}>
                 <span>
-                    #1
+                    #{data.id}
                 </span>
-                <img src="" alt="" className={styles.user_img} />
                 <h3>
-                    Aysel Məmmədova
+                    {data?.username}
                 </h3>
             </div>
             <div>
                 <span>
-                    53 agac
+                    {data?.treeCount} agac
                 </span>
             </div>
             <div>

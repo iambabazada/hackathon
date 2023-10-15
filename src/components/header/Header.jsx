@@ -6,7 +6,8 @@ import Logo from '../../assets/Logo.svg'
 import Basket from '../basket/Basket'
 import CartImg from '../../assets/cart.svg'
 import { useSelector } from 'react-redux'
-
+import { useDispatch } from 'react-redux'
+import { logout } from '../../redux/authSlice'
 
 
 
@@ -32,12 +33,24 @@ const Header = () => {
     ]
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const [basket, setBasket] = useState(false)
 
     const totalCount = useSelector((state) => state.basket.totalCount)
 
+    const isAuth = useSelector((state) => state.auth.isAuth)
 
+
+    const [openUser, setOpenUser] = useState(false)
+
+    const handleUser = () => {
+        setOpenUser(!openUser)
+    }
+
+    const handleLogout = () => {
+        dispatch(logout())
+    }
 
     return (
         <header className={styles.header}>
@@ -73,9 +86,28 @@ const Header = () => {
                     }
                 </div>
                 <div className={styles.btn}>
-                    <Button width='lg' onClick={() => navigate('/daxil-ol')}>
-                        Daxil ol
-                    </Button>
+                    {!isAuth ? (
+                        <Button width='lg' onClick={() => navigate('/daxil-ol')}>
+                            Daxil ol
+                        </Button>
+
+                    ) : (
+                        <>
+                            <button onClick={handleUser}>
+                                A
+                            </button>
+                            {
+                                openUser && (
+
+                                    <div>
+                                        <button onClick={handleLogout}>
+                                            cixis
+                                        </button>
+                                    </div>
+                                )
+                            }
+                        </>
+                    )}
                 </div>
 
             </div>

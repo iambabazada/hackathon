@@ -8,9 +8,9 @@ const Trees = () => {
     const [trees, setTrees] = useState()
 
     const getData = async () => {
-        const response = await axios('https://dummyjson.com/products')
-        setTrees(response.data.products)
-        console.log(response.data.products);
+        const response = await axios('/api/v1/trees')
+        setTrees(response.data.content)
+        console.log(response.data.content);
         return response
     }
 

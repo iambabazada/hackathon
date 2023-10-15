@@ -5,13 +5,14 @@ const initialState = {
     users: JSON.parse(localStorage.getItem("users")) ? JSON.parse((localStorage.getItem("users"))) : null,
     isAuth: localStorage.getItem("token") ? true : false,
     token: localStorage.getItem("token") ? localStorage.getItem("token") : null,
+
 }
 
 
 
 export const register = createAsyncThunk('register', async (data, thunkAPI) => {
     try {
-        const response = await axios.post('http://localhost:8080/api/v1/users', (data))
+        const response = await axios.post('/api/v1/users', (data))
         console.log("succes");
         return response.data
     }
@@ -23,7 +24,7 @@ export const register = createAsyncThunk('register', async (data, thunkAPI) => {
 
 export const login = createAsyncThunk('login', async (data, thunkAPI) => {
     try {
-        const response = await axios.post('http://localhost:8080/api/v1/auth', (data))
+        const response = await axios.post('/api/v1/auth', (data))
         console.log("succes");
         return response.data
     }
@@ -49,12 +50,13 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
 
+
     },
     extraReducers: (builder) => {
         builder
             .addCase(register.fulfilled, (state, action) => {
                 state.users = action.payload.user;
-                localStorage.setItem("users", JSON.stringify(action.payload.user))
+                localStorage.setItem("users", JSON.stringify(action.payload))
                 // const previousUsers = JSON.parse(localStorage.getItem("users") || '[]');
                 // previousUsers.push(action.payload.user);
                 // localStorage.setItem("users", JSON.stringify(previousUsers));

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+    compareName: "",
     isBasketOpen: false,
     basket: localStorage.getItem('basketItems') ? JSON.parse(localStorage.getItem('basketItems')) : [],
     totalCount: localStorage.getItem('totalCount') ? JSON.parse(localStorage.getItem('totalCount')) : 0,
@@ -56,11 +57,14 @@ const basketSlice = createSlice({
             }
             )
             state.totalCount += 1
-        }
+        },
+        compareName: (state, action) => {
+            state.compareName = action.payload
+        },
     }
 })
 
-export const { openBasket, addToBasket, deleteFromBasket, decrementCart, incrementCart } = basketSlice.actions
+export const { openBasket, compareName, addToBasket, deleteFromBasket, decrementCart, incrementCart } = basketSlice.actions
 
 export default basketSlice.reducer
 
